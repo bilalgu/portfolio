@@ -1,0 +1,115 @@
+<p>DevOps Bootstrap Stack - Version 1.0.1 Systems &amp; Cybersecurity
+Engineer Bilal - 23 years old - Master’s degree in work-study program
+GitHub : https://github.com/bilalgu/devops-bootstrap</p>
+<hr />
+<p>This personal project aims to build a secure, automated, and
+realistic cloud infrastructure. It serves as a technical portfolio and a
+learning environment to design and implement a complete DevOps
+workflow.</p>
+<p>Version 1.0.1 deploys a basic service on AWS using infrastructure as
+code, configuration management, containerization, CI/CD and security
+hardening.</p>
+<hr />
+<p>Technology Stack</p>
+<table>
+<thead>
+<tr class="header">
+<th>Area</th>
+<th>Technologies</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IaaS</td>
+<td>AWS EC2</td>
+</tr>
+<tr class="even">
+<td>Provisioning</td>
+<td>Terraform</td>
+</tr>
+<tr class="odd">
+<td>Configuration</td>
+<td>Ansible</td>
+</tr>
+<tr class="even">
+<td>Containerization</td>
+<td>Docker</td>
+</tr>
+<tr class="odd">
+<td>CI/CD</td>
+<td>GitHub Actions</td>
+</tr>
+<tr class="even">
+<td>Security</td>
+<td>SSH hardening + custom fail2ban</td>
+</tr>
+<tr class="odd">
+<td>OS</td>
+<td>Ubuntu 22.04</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Steps Completed</p>
+<p><strong>Step 1 - Infrastrucuture Provisioning
+(Terraform)</strong></p>
+<ul>
+<li>Automatically creates an EC2 instance with SSH key pair</li>
+<li>Deployed using <code>terraform init</code> and
+<code>terraform apply</code></li>
+</ul>
+<p><strong>Step 2 - Server Configuration (Ansible)</strong></p>
+<ul>
+<li>Installs Docker on the instance through Ansible role</li>
+<li>Deployment via
+<code>ansible-playbook -i inventory.ini playbook.yml</code></li>
+</ul>
+<p><strong>Step 3 - Application Deployment (Docker via
+Ansible)</strong></p>
+<ul>
+<li>Nginx container serving a static HTML page</li>
+<li>An Ansible role that copies Dockerfile &amp; index.html, builds and
+runs the container</li>
+<li>Port 80 opened via Terraform aws security group</li>
+</ul>
+<p><strong>Step 4 - Continuous Deployment (GitHub Actions)</strong></p>
+<ul>
+<li>Redeploys automatically (if the VM is up) and if any change is made
+to <code>configuration/ansible/**</code></li>
+<li>Simulates a lightweight CI/CD pipeline</li>
+</ul>
+<p><strong>Step 5 - SSH Hardening &amp; Intrusion
+Protection</strong></p>
+<ul>
+<li>Disables root login and allows only key-based SSH
+authentication</li>
+<li>Custom fail2ban jail with EC2-specific log</li>
+</ul>
+<hr />
+<p>What’s Automated</p>
+<ul>
+<li>Full provisioning with Terraform</li>
+<li>Server configuration with Ansible (Docker, Nginx, hardening)</li>
+<li>Application deployment via Docker and Ansible</li>
+<li>CI/CD with GitHub Actions</li>
+</ul>
+<hr />
+<p>I’ve Learned</p>
+<ul>
+<li>How to structure a full DevOps chain from zero to deployment</li>
+<li>Building reusable Ansible roles</li>
+<li>Writing EC2-compatible fail2ban filters</li>
+<li>Managing and deploying a CI/CD pipeline</li>
+</ul>
+<hr />
+<p>Next Steps (V2.0)</p>
+<ul>
+<li>Increase the protection of the infrastructure and the web
+service</li>
+<li>Set up logging on infrastructure and services</li>
+<li>Deploy a second service and scale the infrastrucutre</li>
+</ul>
+<hr />
+<p>GitHub Repository</p>
+<p>–&gt; Source code and full documentation :
+https://github.com/bilalgu/devops-bootstrap/</p>

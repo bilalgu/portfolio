@@ -1,116 +1,129 @@
-<h1 id="devops-bootstrap-stack-version-1.5.0">DevOps Bootstrap Stack –
-Version 1.5.0</h1>
-<p>Bilal – Systems &amp; Cybersecurity Engineer – 23 years old –
-Master’s degree (Work-Study) GitHub: <a
-href="https://github.com/bilalgu/devops-bootstrap">https://github.com/bilalgu/devops-bootstrap</a></p>
-<p>This personal DevOps/Cyber project aims to build a secure, scalable
-and automated cloud infrastructure — as close as possible to real
-production constraints.</p>
-<p>It serves as :</p>
-<ul>
-<li>a public technical portfolio</li>
-<li>a learning environment for DevOps &amp; Cloud engineering</li>
-<li>a reusable stack to bootstrap real-world deployments</li>
-</ul>
-<hr />
-<h2 id="version-1.5.0-multi-service-stack-with-reverse-proxy">Version
-1.5.0 – Multi-Service Stack with Reverse Proxy</h2>
-<p>This release includes the deployment of a complete Web/API/DB stack,
-routed via Traefik reverse proxy, all automated from provisioning to
-deployment.</p>
-<h3 id="core-features">Core Features</h3>
-<table>
-<thead>
-<tr class="header">
-<th>Layer</th>
-<th>Technology</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>IaaS</td>
-<td>AWS EC2 (Ubuntu 22.04)</td>
-</tr>
-<tr class="even">
-<td>IaC</td>
-<td>Terraform</td>
-</tr>
-<tr class="odd">
-<td>Configuration</td>
-<td>Ansible</td>
-</tr>
-<tr class="even">
-<td>Containerization</td>
-<td>Docker + Docker Compose</td>
-</tr>
-<tr class="odd">
-<td>Reverse Proxy</td>
-<td>Traefik</td>
-</tr>
-<tr class="even">
-<td>Services</td>
-<td>Web (Nginx), API (Node.js), DB (PostgreSQL)</td>
-</tr>
-<tr class="odd">
-<td>Security</td>
-<td>SSH hardening, nftables firewall, fail2ban</td>
-</tr>
-<tr class="even">
-<td>CI/CD</td>
-<td>GitHub Actions</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="whats-deployed">What’s Deployed</h3>
-<h4 id="step-1-infrastructure-provisioning">Step 1 – Infrastructure
-Provisioning</h4>
-<ul>
-<li>EC2 instance provisioned via Terraform</li>
-<li>SSH key and security group (ports 22 and 80 only)</li>
-</ul>
-<h4 id="step-2-system-configuration-with-ansible">Step 2 – System
-Configuration with Ansible</h4>
-<ul>
-<li>Docker &amp; Docker Compose installed</li>
-<li>nftables firewall injected at boot using systemd</li>
-<li>Fail2ban configured with EC2-specific logs</li>
-</ul>
-<h4 id="step-3-multi-service-stack-deployment">Step 3 – Multi-Service
-Stack Deployment</h4>
-<ul>
-<li>Docker Compose stack:
-<ul>
-<li><code>web</code>: static frontend (Nginx)</li>
-<li><code>back</code>: Node.js API</li>
-<li><code>db</code>: PostgreSQL with persistent volume</li>
-</ul></li>
-<li>Reverse proxy <code>traefik</code> handles all HTTP traffic</li>
-</ul>
-<h4 id="step-4---continuous-deployment-github-actions">Step 4 -
-Continuous Deployment (GitHub Actions)</h4>
-<ul>
-<li>Redeploys automatically (if the VM is up)</li>
-<li>GitHub Actions triggers on changes to Ansible or Docker files</li>
-<li>Automatic deployment to the live EC2 server (via SSH)</li>
-</ul>
-<hr />
-<h2 id="what-ive-learned">What I’ve Learned</h2>
-<ul>
-<li>Automating full-stack deployment on cloud with Ansible &amp;
-Terraform</li>
-<li>Building realistic multi-service architectures using Docker
-Compose</li>
-<li>Working with Traefik as a dynamic reverse proxy</li>
-<li>Writing EC2-compatible fail2ban filters</li>
-<li>Isolating services in production-like environments</li>
-<li>Managing startup dependencies with healthchecks (DB &lt;– API)</li>
-<li>Managing and deploying a CI/CD pipeline</li>
-</ul>
-<h2 id="next-step-v2.0.0">Next Step – V2.0.0</h2>
-<ul>
-<li>Implement Monitoring stack</li>
-</ul>
-<h2 id="github-repository">GitHub Repository</h2>
-<p>→ <a href="https://github.com/bilalgu/devops-bootstrap">Source code
-and documentation</a></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bilal Guirre – Projects</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <h1 id="devops-bootstrap-stack-version-1.5.0">DevOps Bootstrap Stack –
+    Version 1.5.0</h1>
+    <p>Bilal – Systems &amp; Cybersecurity Engineer – 23 years old –
+    Master’s degree (Work-Study)</p>
+    <p>GitHub: <a
+    href="https://github.com/bilalgu/devops-bootstrap">https://github.com/bilalgu/devops-bootstrap</a></p>
+    <p>This personal DevOps/Cyber project aims to build a secure, scalable
+    and automated cloud infrastructure — as close as possible to real
+    production constraints.</p>
+    <p>It serves as :</p>
+    <ul>
+    <li>a public technical portfolio</li>
+    <li>a learning environment for DevOps &amp; Cloud engineering</li>
+    <li>a reusable stack to bootstrap real-world deployments</li>
+    </ul>
+    <hr />
+    <h2 id="version-1.5.0-multi-service-stack-with-reverse-proxy">Version
+    1.5.0 – Multi-Service Stack with Reverse Proxy</h2>
+    <p>This release includes the deployment of a complete Web/API/DB stack,
+    routed via Traefik reverse proxy, all automated from provisioning to
+    deployment.</p>
+    <h3 id="core-features">Core Features</h3>
+    <table>
+    <thead>
+    <tr class="header">
+    <th>Layer</th>
+    <th>Technology</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="odd">
+    <td>IaaS</td>
+    <td>AWS EC2 (Ubuntu 22.04)</td>
+    </tr>
+    <tr class="even">
+    <td>IaC</td>
+    <td>Terraform</td>
+    </tr>
+    <tr class="odd">
+    <td>Configuration</td>
+    <td>Ansible</td>
+    </tr>
+    <tr class="even">
+    <td>Containerization</td>
+    <td>Docker + Docker Compose</td>
+    </tr>
+    <tr class="odd">
+    <td>Reverse Proxy</td>
+    <td>Traefik</td>
+    </tr>
+    <tr class="even">
+    <td>Services</td>
+    <td>Web (Nginx), API (Node.js), DB (PostgreSQL)</td>
+    </tr>
+    <tr class="odd">
+    <td>Security</td>
+    <td>SSH hardening, nftables firewall, fail2ban</td>
+    </tr>
+    <tr class="even">
+    <td>CI/CD</td>
+    <td>GitHub Actions</td>
+    </tr>
+    </tbody>
+    </table>
+    <hr />
+    <h3 id="whats-deployed">What’s Deployed</h3>
+    <h4 id="step-1-infrastructure-provisioning">Step 1 – Infrastructure
+    Provisioning</h4>
+    <ul>
+    <li>EC2 instance provisioned via Terraform</li>
+    <li>SSH key and security group (ports 22 and 80 only)</li>
+    </ul>
+    <h4 id="step-2-system-configuration-with-ansible">Step 2 – System
+    Configuration with Ansible</h4>
+    <ul>
+    <li>Docker &amp; Docker Compose installed</li>
+    <li>nftables firewall injected at boot using systemd</li>
+    <li>Fail2ban configured with EC2-specific logs</li>
+    </ul>
+    <h4 id="step-3-multi-service-stack-deployment">Step 3 – Multi-Service
+    Stack Deployment</h4>
+    <ul>
+    <li>Docker Compose stack:
+    <ul>
+    <li><code>web</code>: static frontend (Nginx)</li>
+    <li><code>back</code>: Node.js API</li>
+    <li><code>db</code>: PostgreSQL with persistent volume</li>
+    </ul></li>
+    <li>Reverse proxy <code>traefik</code> handles all HTTP traffic</li>
+    </ul>
+    <h4 id="step-4---continuous-deployment-github-actions">Step 4 -
+    Continuous Deployment (GitHub Actions)</h4>
+    <ul>
+    <li>Redeploys automatically (if the VM is up)</li>
+    <li>GitHub Actions triggers on changes to Ansible or Docker files</li>
+    <li>Automatic deployment to the live EC2 server (via SSH)</li>
+    </ul>
+    <hr />
+    <h2 id="what-ive-learned">What I’ve Learned</h2>
+    <ul>
+    <li>Automating full-stack deployment on cloud with Ansible &amp;
+    Terraform</li>
+    <li>Building realistic multi-service architectures using Docker
+    Compose</li>
+    <li>Working with Traefik as a dynamic reverse proxy</li>
+    <li>Writing EC2-compatible fail2ban filters</li>
+    <li>Isolating services in production-like environments</li>
+    <li>Managing startup dependencies with healthchecks (DB &lt;– API)</li>
+    <li>Managing and deploying a CI/CD pipeline</li>
+    </ul>
+    <h2 id="next-step-v2.0.0">Next Step – V2.0.0</h2>
+    <ul>
+    <li>Implement Monitoring stack</li>
+    </ul>
+    <h2 id="github-repository">GitHub Repository</h2>
+    <p>→ <a href="https://github.com/bilalgu/devops-bootstrap">Source code
+    and documentation</a></p>
+
+</body>
+</html>

@@ -1,30 +1,38 @@
-<p>DevOps Bootstrap Stack - Version 1.0.1 Systems &amp; Cybersecurity
-Engineer Bilal - 23 years old - Master’s degree in work-study program
-GitHub : https://github.com/bilalgu/devops-bootstrap</p>
+<h1 id="devops-bootstrap-stack-version-1.5.0">DevOps Bootstrap Stack –
+Version 1.5.0</h1>
+<p>Bilal – Systems &amp; Cybersecurity Engineer – 23 years old –
+Master’s degree (Work-Study) GitHub: <a
+href="https://github.com/bilalgu/devops-bootstrap">https://github.com/bilalgu/devops-bootstrap</a></p>
+<p>This personal DevOps/Cyber project aims to build a secure, scalable
+and automated cloud infrastructure — as close as possible to real
+production constraints.</p>
+<p>It serves as :</p>
+<ul>
+<li>a public technical portfolio</li>
+<li>a learning environment for DevOps &amp; Cloud engineering</li>
+<li>a reusable stack to bootstrap real-world deployments</li>
+</ul>
 <hr />
-<p>This personal project aims to build a secure, automated, and
-realistic cloud infrastructure. It serves as a technical portfolio and a
-learning environment to design and implement a complete DevOps
-workflow.</p>
-<p>Version 1.0.1 deploys a basic service on AWS using infrastructure as
-code, configuration management, containerization, CI/CD and security
-hardening.</p>
-<hr />
-<p>Technology Stack</p>
+<h2 id="version-1.5.0-multi-service-stack-with-reverse-proxy">Version
+1.5.0 – Multi-Service Stack with Reverse Proxy</h2>
+<p>This release includes the deployment of a complete Web/API/DB stack,
+routed via Traefik reverse proxy, all automated from provisioning to
+deployment.</p>
+<h3 id="core-features">Core Features</h3>
 <table>
 <thead>
 <tr class="header">
-<th>Area</th>
-<th>Technologies</th>
+<th>Layer</th>
+<th>Technology</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>IaaS</td>
-<td>AWS EC2</td>
+<td>AWS EC2 (Ubuntu 22.04)</td>
 </tr>
 <tr class="even">
-<td>Provisioning</td>
+<td>IaC</td>
 <td>Terraform</td>
 </tr>
 <tr class="odd">
@@ -33,83 +41,76 @@ hardening.</p>
 </tr>
 <tr class="even">
 <td>Containerization</td>
-<td>Docker</td>
+<td>Docker + Docker Compose</td>
 </tr>
 <tr class="odd">
-<td>CI/CD</td>
-<td>GitHub Actions</td>
+<td>Reverse Proxy</td>
+<td>Traefik</td>
 </tr>
 <tr class="even">
-<td>Security</td>
-<td>SSH hardening + custom fail2ban</td>
+<td>Services</td>
+<td>Web (Nginx), API (Node.js), DB (PostgreSQL)</td>
 </tr>
 <tr class="odd">
-<td>OS</td>
-<td>Ubuntu 22.04</td>
+<td>Security</td>
+<td>SSH hardening, nftables firewall, fail2ban</td>
+</tr>
+<tr class="even">
+<td>CI/CD</td>
+<td>GitHub Actions</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p>Steps Completed</p>
-<p><strong>Step 1 - Infrastrucuture Provisioning
-(Terraform)</strong></p>
+<h3 id="whats-deployed">What’s Deployed</h3>
+<h4 id="step-1-infrastructure-provisioning">Step 1 – Infrastructure
+Provisioning</h4>
 <ul>
-<li>Automatically creates an EC2 instance with SSH key pair</li>
-<li>Deployed using <code>terraform init</code> and
-<code>terraform apply</code></li>
+<li>EC2 instance provisioned via Terraform</li>
+<li>SSH key and security group (ports 22 and 80 only)</li>
 </ul>
-<p><strong>Step 2 - Server Configuration (Ansible)</strong></p>
+<h4 id="step-2-system-configuration-with-ansible">Step 2 – System
+Configuration with Ansible</h4>
 <ul>
-<li>Installs Docker on the instance through Ansible role</li>
-<li>Deployment via
-<code>ansible-playbook -i inventory.ini playbook.yml</code></li>
+<li>Docker &amp; Docker Compose installed</li>
+<li>nftables firewall injected at boot using systemd</li>
+<li>Fail2ban configured with EC2-specific logs</li>
 </ul>
-<p><strong>Step 3 - Application Deployment (Docker via
-Ansible)</strong></p>
+<h4 id="step-3-multi-service-stack-deployment">Step 3 – Multi-Service
+Stack Deployment</h4>
 <ul>
-<li>Nginx container serving a static HTML page</li>
-<li>An Ansible role that copies Dockerfile &amp; index.html, builds and
-runs the container</li>
-<li>Port 80 opened via Terraform aws security group</li>
+<li>Docker Compose stack:
+<ul>
+<li><code>web</code>: static frontend (Nginx)</li>
+<li><code>back</code>: Node.js API</li>
+<li><code>db</code>: PostgreSQL with persistent volume</li>
+</ul></li>
+<li>Reverse proxy <code>traefik</code> handles all HTTP traffic</li>
 </ul>
-<p><strong>Step 4 - Continuous Deployment (GitHub Actions)</strong></p>
+<h4 id="step-4---continuous-deployment-github-actions">Step 4 -
+Continuous Deployment (GitHub Actions)</h4>
 <ul>
-<li>Redeploys automatically (if the VM is up) and if any change is made
-to <code>configuration/ansible/**</code></li>
-<li>Simulates a lightweight CI/CD pipeline</li>
-</ul>
-<p><strong>Step 5 - SSH Hardening &amp; Intrusion
-Protection</strong></p>
-<ul>
-<li>Disables root login and allows only key-based SSH
-authentication</li>
-<li>Custom fail2ban jail with EC2-specific log</li>
+<li>Redeploys automatically (if the VM is up)</li>
+<li>GitHub Actions triggers on changes to Ansible or Docker files</li>
+<li>Automatic deployment to the live EC2 server (via SSH)</li>
 </ul>
 <hr />
-<p>What’s Automated</p>
+<h2 id="what-ive-learned">What I’ve Learned</h2>
 <ul>
-<li>Full provisioning with Terraform</li>
-<li>Server configuration with Ansible (Docker, Nginx, hardening)</li>
-<li>Application deployment via Docker and Ansible</li>
-<li>CI/CD with GitHub Actions</li>
-</ul>
-<hr />
-<p>I’ve Learned</p>
-<ul>
-<li>How to structure a full DevOps chain from zero to deployment</li>
-<li>Building reusable Ansible roles</li>
+<li>Automating full-stack deployment on cloud with Ansible &amp;
+Terraform</li>
+<li>Building realistic multi-service architectures using Docker
+Compose</li>
+<li>Working with Traefik as a dynamic reverse proxy</li>
 <li>Writing EC2-compatible fail2ban filters</li>
+<li>Isolating services in production-like environments</li>
+<li>Managing startup dependencies with healthchecks (DB &lt;– API)</li>
 <li>Managing and deploying a CI/CD pipeline</li>
 </ul>
-<hr />
-<p>Next Steps (V2.0)</p>
+<h2 id="next-step-v2.0.0">Next Step – V2.0.0</h2>
 <ul>
-<li>Increase the protection of the infrastructure and the web
-service</li>
-<li>Set up logging on infrastructure and services</li>
-<li>Deploy a second service and scale the infrastrucutre</li>
+<li>Implement Monitoring stack</li>
 </ul>
-<hr />
-<p>GitHub Repository</p>
-<p>–&gt; Source code and full documentation :
-https://github.com/bilalgu/devops-bootstrap/</p>
+<h2 id="github-repository">GitHub Repository</h2>
+<p>→ <a href="https://github.com/bilalgu/devops-bootstrap">Source code
+and documentation</a></p>

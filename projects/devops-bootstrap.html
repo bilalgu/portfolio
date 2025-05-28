@@ -7,119 +7,130 @@
 </head>
 <body>
 
-    <h1 id="devops-bootstrap-stack-version-1.5.0">DevOps Bootstrap Stack –
-    Version 1.5.0</h1>
-    <p>Bilal – Systems &amp; Cybersecurity Engineer – 23 years old –
-    Master’s degree (Work-Study)</p>
+    <h1 id="devops-bootstrap-stack-version-2.0.0">DevOps Bootstrap Stack –
+    Version 2.0.0</h1>
+    <p><strong>Bilal – Systems &amp; Cybersecurity Engineer – 23 y/o –
+    Master’s (Work-Study)</strong></p>
     <p>GitHub: <a
     href="https://github.com/bilalgu/devops-bootstrap">https://github.com/bilalgu/devops-bootstrap</a></p>
-    <p>This personal DevOps/Cyber project aims to build a secure, scalable
-    and automated cloud infrastructure — as close as possible to real
-    production constraints.</p>
-    <p>It serves as :</p>
+    <p>This DevOps &amp; Cloud Security project aims to build a
+    <strong>realistic, secure and automated cloud infrastructure</strong> —
+    as close as possible to real production constraints.</p>
+    <p>It serves as:</p>
     <ul>
-    <li>a public technical portfolio</li>
-    <li>a learning environment for DevOps &amp; Cloud engineering</li>
-    <li>a reusable stack to bootstrap real-world deployments</li>
+    <li><p>a <strong>public technical portfolio</strong>
+    (DevOps/Cyber/Cloud)</p></li>
+    <li><p>a <strong>learning platform</strong> for professional-grade
+    practices</p></li>
+    <li><p>a <strong>reusable stack</strong> to bootstrap real-world
+    deployments</p></li>
     </ul>
     <hr />
-    <h2 id="version-1.5.0-multi-service-stack-with-reverse-proxy">Version
-    1.5.0 – Multi-Service Stack with Reverse Proxy</h2>
-    <p>This release includes the deployment of a complete Web/API/DB stack,
-    routed via Traefik reverse proxy, all automated from provisioning to
-    deployment.</p>
-    <h3 id="core-features">Core Features</h3>
+    <h2
+    id="version-2.0.0-multi-service-stack-with-security-monitoring">Version
+    2.0.0 – Multi-Service Stack with Security &amp; Monitoring</h2>
+    <p>This release completes the roadmap for version 2.0.0,
+    introducing:</p>
+    <ul>
+    <li><p>a realistic <strong>Web/API/DB architecture</strong></p></li>
+    <li><p>a secure and hardened EC2 instance</p></li>
+    <li><p><strong>live metrics</strong> via cAdvisor &amp;
+    Prometheus</p></li>
+    <li><p>full automation with Terraform + Ansible</p></li>
+    </ul>
+    <h3 id="core-technologies">Core Technologies</h3>
     <table>
     <thead>
     <tr class="header">
     <th>Layer</th>
-    <th>Technology</th>
+    <th>Tech Stack</th>
     </tr>
     </thead>
     <tbody>
     <tr class="odd">
-    <td>IaaS</td>
+    <td><strong>IaaS</strong></td>
     <td>AWS EC2 (Ubuntu 22.04)</td>
     </tr>
     <tr class="even">
-    <td>IaC</td>
+    <td><strong>IaC</strong></td>
     <td>Terraform</td>
     </tr>
     <tr class="odd">
-    <td>Configuration</td>
+    <td><strong>Provisioning</strong></td>
     <td>Ansible</td>
     </tr>
     <tr class="even">
-    <td>Containerization</td>
+    <td><strong>Containerization</strong></td>
     <td>Docker + Docker Compose</td>
     </tr>
     <tr class="odd">
-    <td>Reverse Proxy</td>
-    <td>Traefik</td>
+    <td><strong>Routing</strong></td>
+    <td>Traefik (HTTP reverse proxy)</td>
     </tr>
     <tr class="even">
-    <td>Services</td>
+    <td><strong>Services</strong></td>
     <td>Web (Nginx), API (Node.js), DB (PostgreSQL)</td>
     </tr>
     <tr class="odd">
-    <td>Security</td>
-    <td>SSH hardening, nftables firewall, fail2ban</td>
+    <td><strong>Security</strong></td>
+    <td>SSH hardening, fail2ban, nftables firewall</td>
     </tr>
     <tr class="even">
-    <td>CI/CD</td>
+    <td><strong>Monitoring</strong></td>
+    <td>cAdvisor, Prometheus (routed via Traefik)</td>
+    </tr>
+    <tr class="odd">
+    <td><strong>CI/CD</strong></td>
     <td>GitHub Actions</td>
     </tr>
     </tbody>
     </table>
     <hr />
     <h3 id="whats-deployed">What’s Deployed</h3>
-    <h4 id="step-1-infrastructure-provisioning">Step 1 – Infrastructure
-    Provisioning</h4>
+    <h4 id="infrastructure">Infrastructure</h4>
     <ul>
-    <li>EC2 instance provisioned via Terraform</li>
-    <li>SSH key and security group (ports 22 and 80 only)</li>
+    <li><p>EC2 instance provisioned with SSH key and firewall rules</p></li>
+    <li><p>nftables firewall injected via <code>systemd</code> (persistent
+    across reboots)</p></li>
     </ul>
-    <h4 id="step-2-system-configuration-with-ansible">Step 2 – System
-    Configuration with Ansible</h4>
+    <h4 id="application-stack">Application Stack</h4>
     <ul>
-    <li>Docker &amp; Docker Compose installed</li>
-    <li>nftables firewall injected at boot using systemd</li>
-    <li>Fail2ban configured with EC2-specific logs</li>
-    </ul>
-    <h4 id="step-3-multi-service-stack-deployment">Step 3 – Multi-Service
-    Stack Deployment</h4>
+    <li><p>Docker Compose stack (<code>web</code>, <code>back</code>,
+    <code>db</code>) deployed with healthchecks</p></li>
+    <li><p>Traefik reverse proxy routes:</p>
     <ul>
-    <li>Docker Compose stack:
-    <ul>
-    <li><code>web</code>: static frontend (Nginx)</li>
-    <li><code>back</code>: Node.js API</li>
-    <li><code>db</code>: PostgreSQL with persistent volume</li>
+    <li><p><code>/</code> → Web frontend</p></li>
+    <li><p><code>/api/*</code> → Node.js backend</p></li>
+    <li><p><code>/monitoring/*</code> → Prometheus</p></li>
     </ul></li>
-    <li>Reverse proxy <code>traefik</code> handles all HTTP traffic</li>
     </ul>
-    <h4 id="step-4---continuous-deployment-github-actions">Step 4 -
-    Continuous Deployment (GitHub Actions)</h4>
+    <h4 id="monitoring">Monitoring</h4>
     <ul>
-    <li>Redeploys automatically (if the VM is up)</li>
-    <li>GitHub Actions triggers on changes to Ansible or Docker files</li>
-    <li>Automatic deployment to the live EC2 server (via SSH)</li>
+    <li><p>cAdvisor exposes container and host metrics</p></li>
+    <li><p>Prometheus scrapes metrics from cAdvisor (5s interval)</p></li>
+    <li><p>Prometheus is available via <code>/monitoring</code> through
+    Traefik</p></li>
+    </ul>
+    <h4 id="automation-ci">Automation &amp; CI</h4>
+    <ul>
+    <li><p>Everything deploys via Ansible in one command</p></li>
+    <li><p>GitHub Actions CI redeploys automatically on changes</p></li>
     </ul>
     <hr />
     <h2 id="what-ive-learned">What I’ve Learned</h2>
     <ul>
-    <li>Automating full-stack deployment on cloud with Ansible &amp;
-    Terraform</li>
-    <li>Building realistic multi-service architectures using Docker
-    Compose</li>
-    <li>Working with Traefik as a dynamic reverse proxy</li>
-    <li>Writing EC2-compatible fail2ban filters</li>
-    <li>Isolating services in production-like environments</li>
-    <li>Managing startup dependencies with healthchecks (DB &lt;– API)</li>
-    <li>Managing and deploying a CI/CD pipeline</li>
-    </ul>
-    <h2 id="next-step-v2.0.0">Next Step – V2.0.0</h2>
-    <ul>
-    <li>Implement Monitoring stack</li>
+    <li><p>Deploying multi-container stacks with internal network
+    isolation</p></li>
+    <li><p>Using Traefik with PathPrefix routing and middleware</p></li>
+    <li><p>Exposing Prometheus securely behind a reverse proxy</p></li>
+    <li><p>Managing container startup dependencies with
+    healthchecks</p></li>
+    <li><p>Writing EC2-compatible fail2ban filters</p></li>
+    <li><p>Writing production-style Ansible roles</p></li>
+    <li><p>Structuring cloud infrastructure with Terraform + Ansible +
+    CI/CD</p></li>
+    <li><p>Designing a project that is <strong>both technical and
+    reusable</strong></p></li>
     </ul>
     <h2 id="github-repository">GitHub Repository</h2>
     <p>→ <a href="https://github.com/bilalgu/devops-bootstrap">Source code
